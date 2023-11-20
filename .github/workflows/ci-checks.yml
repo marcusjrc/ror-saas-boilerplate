@@ -25,6 +25,8 @@ jobs:
   testing:
     name: Testing
     runs-on: ubuntu-latest
+    env:
+      STRIPE_API_KEY: 'test-key'
     services:
       postgres:
         image: postgres:15-alpine
