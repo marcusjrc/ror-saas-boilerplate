@@ -14,6 +14,6 @@ bronze_title = 'Bronze'
 silver_title = 'Silver'
 gold_title = 'Gold'
 
-Product.create(title: bronze_title, content: 'Basic tier', price: 1000) unless Product.find_by(title: bronze_title).exists?
-Product.create(title: silver_title, content: 'Our suggested tier', price: 1400) unless Product.find_by(title: silver_title).exists?
-Product.create(title: gold_title, content: 'Gold tier', price: 3000) unless Product.find_by(title: gold_title).exists?
+Product.create(title: bronze_title, content: 'Basic tier', price: 1000) unless Product.exists?(title: bronze_title)
+Product.create(title: silver_title, content: 'Our suggested tier', price: 1400) unless Product.exists?(title: silver_title)
+Product.create(title: gold_title, content: 'Gold tier', price: 3000) unless Product.exists?(title: gold_title)
