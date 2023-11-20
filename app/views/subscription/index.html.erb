@@ -1,0 +1,13 @@
+<div>
+  <h1>Subscription</h1>
+  <% if current_user.subscribed? %>
+    <div class="flex flex-col" >
+      <p>You are currently subscribed as a <%= current_user.subscription_name %> Member</p>
+      <div class="mt-3">
+        <%= link_to "Manage your subscription", @url, class: "bg-blue-500 p-2 text-white rounded text-sm" %>
+      </div>
+    </div>
+  <% else %>
+    <%= render partial: "pricing_cards", locals: { products: @products }%>
+  <% end %>
+</div>

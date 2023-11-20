@@ -28,7 +28,8 @@ resource "aws_ecs_task_definition" "app" {
       {"name": "MEDIA_BUCKET_NAME", "value": "${aws_s3_bucket.main_bucket.id}"},
       {"name": "SECRET_KEY_BASE", "value": "${var.secret_key}"},
       {"name": "SECRET_ACCESS_KEY", "value": "${var.aws_secret_access_key}"},
-      {"name": "ACCESS_KEY_ID", "value": "${var.aws_access_key_id}"}
+      {"name": "ACCESS_KEY_ID", "value": "${var.aws_access_key_id}"},
+      {"name": "STRIPE_API_KEY", "value": "${var.stripe_api_key}"}
     ],
     "portMappings": [
         {

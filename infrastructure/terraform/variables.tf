@@ -72,3 +72,8 @@ variable "redis_instance_type" {
     type = string
     default = "cache.t4g.micro"
 }
+
+variable "stripe_api_key" {
+    description = "API key for Stripe payments"
+    type = string
+}

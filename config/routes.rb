@@ -31,4 +31,9 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root 'auth_pages#index'
+
+  get 'checkout/success' => 'checkout#success', as: :checkout_success
+  get 'checkout/:price_id' => 'checkout#create', as: :checkout
+
+  resources :subscription, only: [:index]
 end
