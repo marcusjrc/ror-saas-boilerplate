@@ -10,6 +10,10 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
-Product.create(title: 'Bronze', content: 'Basic tier', price: 1000)
-Product.create(title: 'Silver', content: 'Our suggested tier', price: 1400)
-Product.create(title: 'Gold', content: 'Gold tier', price: 3000)
+bronze_title = 'Bronze'
+silver_title = 'Silver'
+gold_title = 'Gold'
+
+Product.create(title: bronze_title, content: 'Basic tier', price: 1000)
+Product.create(title: silver_title, content: 'Our suggested tier', price: 1400)
+Product.create(title: gold_title, content: 'Gold tier', price: 3000)
