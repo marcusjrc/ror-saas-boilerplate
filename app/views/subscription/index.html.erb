@@ -3,6 +3,12 @@
   <% if current_user.subscribed? %>
     <div class="flex flex-col" >
       <p>You are currently subscribed as a <%= current_user.subscription_name %> Member</p>
+      <p>Subscription Status: <%= current_user.subscription.status.capitalize %></p>
+      <% if current_user.subscription.cancel_at_period_end %>
+        <p>You have cancelled your subscription and it will expire on <%= current_user.subscription.current_period_end.strftime("%A #{current_user.subscription.current_period_end.day.ordinalize} %B at %l:%M%P") %></p>
+      <% else %>
+        <p>Your subscription will renew on <%= current_user.subscription.current_period_end.strftime("%A #{current_user.subscription.current_period_end.day.ordinalize} %B at %l:%M%P") %></p>
+      <% end %>
       <div class="mt-3">
         <%= link_to "Manage your subscription", @url, class: "bg-blue-500 p-2 text-white rounded text-sm" %>
       </div>

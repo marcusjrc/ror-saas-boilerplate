@@ -3,8 +3,7 @@
 class CheckoutController < ApplicationController
   before_action :authenticate_user!
   def create
-    redirect_to root_url, notice: 'You already have an active subscription' && return if !current_user.subscription.blank? && (current_user.subscription.status == 'trialing' || current_user.subscription.status == 'active')
-
+    redirect_to root_url, notice: 'You already have an active subscription' && return if current_user.subscribed?
     price = params[:price_id]
     session = Stripe::Checkout::Session.create(
       customer: current_user.customer_id,
@@ -37,6 +36,6 @@ class CheckoutController < ApplicationController
       status: subscription.status,
       subscription_id: subscription.id
     )
-    redirect_to root_url, status: "Success! You are now subscribed as a #{product.title} member" and return
+    redirect_to root_url, notice: "Success! You are now subscribed as a #{product.title} member", allow_other_host: true
   end
 end

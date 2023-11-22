@@ -8,7 +8,7 @@
           <h4 class="mt-1">£<%= pro.price / 100%> per month</h4>
         </div>
         <div class="justify-self-end mt-2 mb-2">
-          <%= link_to "Join", checkout_path(pro.price_id), class: "w-full self-end rounded p-2 bg-blue-400 text-white hover:bg-blue-500 mt-2" %>
+          <%= link_to "Join", checkout_path(pro.price_id), class: "w-full self-end rounded p-2 bg-blue-400 text-white hover:bg-blue-500 mt-2", data: { turbo: false } %>
         </div>
       </div>
     <% end %>

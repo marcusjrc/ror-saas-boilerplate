@@ -21,11 +21,11 @@ class User < ApplicationRecord
   end
 
   def subscribed?
-    !subscription.blank? && (subscription.status == 'active' || subscription.status == 'trialing')
+    !subscription.blank? && (subscription.status == 'active' || subscription.status == 'trialing') and subscription.current_period_end > Time.now
   end
 
   def subscription_name
-    subscription.product.title unless subscription.blank?
+    subscription.product.title
   end
 
   def assign_customer_id

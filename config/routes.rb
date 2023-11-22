@@ -34,6 +34,7 @@ Rails.application.routes.draw do
 
   get 'checkout/success' => 'checkout#success', as: :checkout_success
   get 'checkout/:price_id' => 'checkout#create', as: :checkout
+  post 'stripe/webhook' => 'webhooks#index', as: :stripe_webhook
 
   resources :subscription, only: [:index]
 end
