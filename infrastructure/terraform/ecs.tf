@@ -15,8 +15,8 @@ resource "aws_ecs_task_definition" "app" {
   {
     "name": "app",
     "image": "${aws_ecr_repository.app.repository_url}:latest",
-    "cpu": 512,
-    "memoryReservation": 200,
+    "cpu": 1024,
+    "memoryReservation": 300,
     "essential": true,
     "environment": [
       {"name": "DOMAIN", "value": "${var.domain}"},
@@ -31,6 +31,9 @@ resource "aws_ecs_task_definition" "app" {
       {"name": "ACCESS_KEY_ID", "value": "${var.aws_access_key_id}"},
       {"name": "STRIPE_API_KEY", "value": "${var.stripe_api_key}"}
     ],
+    "linuxParameters": {
+      "initProcessEnabled": true
+    },
     "portMappings": [
         {
           "containerPort": 3000,
@@ -50,7 +53,7 @@ resource "aws_ecs_task_definition" "app" {
     "name": "nginx",
     "image": "${aws_ecr_repository.nginx.repository_url}:latest",
     "memoryReservation": 128,
-    "cpu": 1024,
+    "cpu": 512,
     "essential": true,
     "logConfiguration": {
       "logDriver": "awslogs",
