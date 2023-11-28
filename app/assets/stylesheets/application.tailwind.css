@@ -20,11 +20,11 @@
   input[type="email"],
   select,
   input[type="password"] {
-    @apply w-full rounded
+    @apply w-full
   }
 
   input[type="submit"] {
-    @apply bg-blue-600 p-2 rounded text-white mt-2 mb-2 hover:bg-blue-700 hover:cursor-pointer
+    @apply bg-primary p-2 text-white mt-2 mb-2 hover:bg-primaryDarken hover:cursor-pointer
   }
 
   input[type="email"]:disabled {
@@ -37,5 +37,9 @@
 
   a {
     @apply hover:underline
+  }
+
+  p {
+    @apply mb-1
   }
 }

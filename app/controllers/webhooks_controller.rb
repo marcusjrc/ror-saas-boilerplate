@@ -26,6 +26,7 @@ class WebhooksController < ApplicationController
       Subscription.create(user:, product:, status: subscription.status, cancel_at_period_end: subscription.cancel_at_period_end, current_period_start: Time.at(subscription.current_period_start),
                           current_period_end: Time.at(subscription.current_period_end),
                           interval: subscription.plan.interval, subscription_id: subscription.id)
+
     when 'customer.subscription.updated'
       subscription = event.data.object
       subscription_obj = Subscription.find_by!(subscription_id: subscription.id)

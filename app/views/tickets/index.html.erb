@@ -1,15 +1,14 @@
 <div class="w-full">
   <div class="flex justify-between items-center">
-    <h1>Help</h1>
-    <%= link_to "New ticket", new_ticket_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h3>Help</h3>
+    <%= link_to "New ticket", new_ticket_path, class: "py-2 px-4 bg-primary hover:bg-primaryDarken text-white block font-medium" %>
   </div>
-    <h3 class="text-xl mt-1">View and create tickets to get help for a problem</h1>
   <div id="tickets" class="min-w-full">
     <% if @tickets.length == 0%>
       <p class="mt-5">You have no tickets</p>
     <% end %>
     <% if @tickets.length > 0%>
-      <table class="table-fixed border-separate py-2 mt-5 w-full">
+      <table class="table-fixed border-separate py-2 mt-5 w-full bg-white px-2 shadow">
         <thead class="text-left text-xs md:text-sm">
           <tr>
             <th>Problem</th>
@@ -21,7 +20,7 @@
         </thead>
         <tbody class="text-left text-xs md:text-sm">
           <% @tickets.each do |ticket| %>
-            <tr>
+            <tr class="border">
               <td><%= ticket.problem[0,30]... %></td>
               <td><%= ticket.resolved ? "Closed" : 'Unresolved' %></td>
               <td><%= ticket.category.humanize %></td>

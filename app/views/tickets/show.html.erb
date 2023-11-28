@@ -6,7 +6,7 @@
           <div class="px-2.5 py-0.5 rounded font-light border border-gray-600 mr-2 w-fit self-center text-xs sm:text-sm">Category: <%= @ticket.category.humanize %></div>
           <div class="px-2.5 py-0.5 rounded font-light border border-gray-600 mr-2 w-fit self-center text-xs sm:text-sm">Status: <%= @ticket.resolved ? "Closed" : 'Unresolved'  %></div>
           <% unless @ticket.resolved %>
-          <%= button_to "Close ticket", ticket_path(@ticket), method: :delete, class: "border-black border rounded mr-1 px-2.5 py-0.5 self-center text-xs sm:text-sm", form: { data: { turbo_confirm: "Are you sure you want to close this ticket?" } } %>
+          <%= button_to "Close ticket", ticket_path(@ticket), method: :delete, class: "border-black hover:bg-gray-200 border rounded mr-1 px-2.5 py-0.5 self-center text-xs sm:text-sm", form: { data: { turbo_confirm: "Are you sure you want to close this ticket?" } } %>
           <% end %>
         </div>
     </div>

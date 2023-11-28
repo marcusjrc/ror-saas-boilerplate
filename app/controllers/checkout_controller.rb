@@ -25,7 +25,7 @@ class CheckoutController < ApplicationController
     subscription = Stripe::Subscription.retrieve(session.subscription)
     product = Product.find_by(price_id: subscription.plan.id)
 
-    redirect_to root_url and return if Subscription.exists?(subscription_id: subscription.id)
+    redirect_to root_url, notice: "Success! You are now subscribed as a #{product.title} member" and return if Subscription.exists?(subscription_id: subscription.id)
 
     Subscription.create(
       user: current_user,

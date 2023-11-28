@@ -3,6 +3,7 @@
   <head>
     <title>SaasRails</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="https://fonts.cdnfonts.com/css/sono" rel="stylesheet">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -16,7 +17,7 @@
       }
     </style>
   </head>
-  <body>
+  <body class="bg-[#f6f6f6]">
     <div class="mx-auto min-h-screen">
       <% if user_signed_in? %>
           <%= render "layouts/menu" %>

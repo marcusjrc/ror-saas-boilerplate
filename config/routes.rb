@@ -19,8 +19,12 @@ Rails.application.routes.draw do
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
+
+  # Defines the root path route ("/")
+  root 'auth_pages#index'
   get 'up' => 'rails/health#show', as: :rails_health_check
 
+  get 't&c' => 'pages#terms_and_conditions', as: :terms_and_conditions
   get 'contact' => 'auth_pages#contact'
 
   post 'tickets/:ticket_id/comments' => 'ticket_comments#new', as: :new_ticket_comment
@@ -28,9 +32,6 @@ Rails.application.routes.draw do
   post 'notifications' => 'notification#mark_notifications_as_read', as: :notification_mark_as_read
 
   get 'notification/:notification_id' => 'notification#redirect_to_notification', as: :notification_redirect
-
-  # Defines the root path route ("/")
-  root 'auth_pages#index'
 
   get 'checkout/success' => 'checkout#success', as: :checkout_success
   get 'checkout/:price_id' => 'checkout#create', as: :checkout
