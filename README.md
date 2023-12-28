@@ -2,7 +2,7 @@
 
 This is a wip project for creating a SaaS boilerplate/template application using Ruby on Rails.
 ## Demo
-www.saas.marcusrc.com
+saas.marcusrc.com
 
 ## Features
 1. User Login, Registration & Forgot Password functionality (via Devise gem)
