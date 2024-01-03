@@ -1,10 +1,8 @@
-# frozen_string_literal: true
-
 class Notification < ApplicationRecord
   include ActionView::RecordIdentifier
   belongs_to :user
 
-  validates :content, presence: true, length: { minimum: 3, maximum: 250 }
+  validates :content, presence: true, length: {minimum: 3, maximum: 250}
 
   # Turbo logic for notifications
 
@@ -12,9 +10,9 @@ class Notification < ApplicationRecord
     broadcast_update_to(
       user,
       :notifications,
-      partial: 'components/notification/notification_button',
-      target: 'notification_btn',
-      locals: { notification_count: user.notifications.where(has_read: false).count }
+      partial: "components/notification/notification_button",
+      target: "notification_btn",
+      locals: {notification_count: user.notifications.where(has_read: false).count}
     )
   end
 
@@ -22,8 +20,8 @@ class Notification < ApplicationRecord
     broadcast_prepend_to(
       user,
       :notifications,
-      partial: 'components/notification/notification',
-      target: 'notifications'
+      partial: "components/notification/notification",
+      target: "notifications"
     )
   end
 

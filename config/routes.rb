@@ -1,19 +1,17 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   resources :tickets
   devise_for :users, skip: %i[sessions registrations]
   devise_scope :user do
-    get 'login',  to: 'devise/sessions#new', as: :new_user_session
-    post 'login', to: 'devise/sessions#create', as: :user_session
-    get 'log_out' => 'devise/sessions#destroy', as: :destroy_user_session
+    get "login", to: "devise/sessions#new", as: :new_user_session
+    post "login", to: "devise/sessions#create", as: :user_session
+    get "log_out" => "devise/sessions#destroy", :as => :destroy_user_session
 
-    get 'signup' => 'devise/registrations#new', as: :new_user_registration
-    post 'signup' => 'devise/registrations#create', as: :user_registration
-    put 'signup' => 'devise/registrations#update', as: :update_user_registration
-    patch 'signup' => 'devise/registrations#update', as: :patch_user_registration
+    get "signup" => "devise/registrations#new", :as => :new_user_registration
+    post "signup" => "devise/registrations#create", :as => :user_registration
+    put "signup" => "devise/registrations#update", :as => :update_user_registration
+    patch "signup" => "devise/registrations#update", :as => :patch_user_registration
 
-    get 'edit-user' => 'devise/registrations#edit', as: :edit_user_registration
+    get "edit-user" => "devise/registrations#edit", :as => :edit_user_registration
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
@@ -21,21 +19,21 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
 
   # Defines the root path route ("/")
-  root 'auth_pages#index'
-  get 'up' => 'rails/health#show', as: :rails_health_check
+  root "auth_pages#index"
+  get "up" => "rails/health#show", :as => :rails_health_check
 
-  get 't&c' => 'pages#terms_and_conditions', as: :terms_and_conditions
-  get 'contact' => 'auth_pages#contact'
+  get "t&c" => "pages#terms_and_conditions", :as => :terms_and_conditions
+  get "contact" => "auth_pages#contact"
 
-  post 'tickets/:ticket_id/comments' => 'ticket_comments#new', as: :new_ticket_comment
+  post "tickets/:ticket_id/comments" => "ticket_comments#new", :as => :new_ticket_comment
 
-  post 'notifications' => 'notification#mark_notifications_as_read', as: :notification_mark_as_read
+  post "notifications" => "notification#mark_notifications_as_read", :as => :notification_mark_as_read
 
-  get 'notification/:notification_id' => 'notification#redirect_to_notification', as: :notification_redirect
+  get "notification/:notification_id" => "notification#redirect_to_notification", :as => :notification_redirect
 
-  get 'checkout/success' => 'checkout#success', as: :checkout_success
-  get 'checkout/:price_id' => 'checkout#create', as: :checkout
-  post 'stripe/webhook' => 'webhooks#index', as: :stripe_webhook
+  get "checkout/success" => "checkout#success", :as => :checkout_success
+  get "checkout/:price_id" => "checkout#create", :as => :checkout
+  post "stripe/webhook" => "webhooks#index", :as => :stripe_webhook
 
   resources :subscription, only: [:index]
 end

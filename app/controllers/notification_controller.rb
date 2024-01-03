@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class NotificationController < ApplicationController
   before_action :authenticate_user!
   before_action :set_notification, only: %i[redirect_to_notification]
@@ -17,9 +15,7 @@ class NotificationController < ApplicationController
   private
 
   def set_notification
-    @notification = Notification.find_by_id(params[:notification_id])
-    raise ActionController::RoutingError, 'Not Found' if @notification.blank?
-
+    @notification = Notification.find(params[:notification_id])
     head(:unauthorized) if @notification.user != current_user
   end
 end

@@ -21,7 +21,7 @@ jobs:
 
       - name: Run linters
         run: |
-          bundle exec rubocop
+          bundle exec standardrb
   testing:
     name: Testing
     runs-on: ubuntu-latest

@@ -1,18 +1,16 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+    :recoverable, :rememberable, :validatable
 
   has_many :tickets, dependent: :destroy
   has_many :notifications, dependent: :destroy
   has_one :subscription, dependent: :destroy
 
-  validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name) }
-  validates :first_name, presence: true, length: { minimum: 2, maximum: 300 }
-  validates :last_name, presence: true, length: { minimum: 2, maximum: 300 }
+  validates :timezone, inclusion: {in: ActiveSupport::TimeZone.all.map(&:name)}
+  validates :first_name, presence: true, length: {minimum: 2, maximum: 300}
+  validates :last_name, presence: true, length: {minimum: 2, maximum: 300}
 
   after_save :assign_customer_id
 
@@ -21,7 +19,7 @@ class User < ApplicationRecord
   end
 
   def subscribed?
-    !subscription.blank? && (subscription.status == 'active' || subscription.status == 'trialing') and subscription.current_period_end > Time.now
+    !subscription.blank? && (subscription.status == "active" || subscription.status == "trialing") and subscription.current_period_end > Time.now
   end
 
   def subscription_name

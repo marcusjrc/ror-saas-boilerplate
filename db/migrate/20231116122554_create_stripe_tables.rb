@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class CreateStripeTables < ActiveRecord::Migration[7.1]
   def change
     create_table :products do |t|
@@ -12,8 +10,8 @@ class CreateStripeTables < ActiveRecord::Migration[7.1]
     end
 
     create_table :subscriptions do |t|
-      t.belongs_to :user, foreign_key: { on_delete: :cascade }
-      t.belongs_to :product, foreign_key: { on_delete: :cascade }
+      t.belongs_to :user, foreign_key: {on_delete: :cascade}
+      t.belongs_to :product, foreign_key: {on_delete: :cascade}
       t.string :status
       t.datetime :current_period_start
       t.datetime :current_period_end

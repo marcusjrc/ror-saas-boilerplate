@@ -1,3 +1,1 @@
-# frozen_string_literal: true
-
-Stripe.api_key = ENV.fetch('STRIPE_API_KEY', nil)
+Stripe.api_key = ENV.fetch("STRIPE_API_KEY", nil)

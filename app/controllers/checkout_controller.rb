@@ -1,17 +1,15 @@
-# frozen_string_literal: true
-
 class CheckoutController < ApplicationController
   before_action :authenticate_user!
   def create
-    redirect_to root_url, notice: 'You already have an active subscription' && return if current_user.subscribed?
+    redirect_to root_url, notice: "You already have an active subscription" && return if current_user.subscribed?
     price = params[:price_id]
     session = Stripe::Checkout::Session.create(
       customer: current_user.customer_id,
       client_reference_id: current_user.id,
       success_url: "#{root_url}checkout/success?session_id={CHECKOUT_SESSION_ID}",
       cancel_url: subscription_index_url,
-      payment_method_types: ['card'],
-      mode: 'subscription',
+      payment_method_types: ["card"],
+      mode: "subscription",
       line_items: [{
         quantity: 1,
         price:
