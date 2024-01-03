@@ -13,8 +13,10 @@ saas.marcusrc.com
 
 ## Testing and Linting
 1. For linting, standardrb is used, use `standardrb` to run
+1. RSpec is to be used for testing going forward, using `bundle exec rspec`. TODO: Controller tests to be migrated to features, along with factories (using Factory Bot) instead of fixtures
 
 ## To do..
+1. Set up feature testing using Rspec
 1. Add SSO (via Devise)
 1. Setup basic admin functionality (subscription, ticketing)
 1. Setup basic isolated "apps" to share between users/teams

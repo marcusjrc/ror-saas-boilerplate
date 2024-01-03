@@ -7,7 +7,7 @@ class TicketCommentsController < ApplicationController
   end
 
   def new
-    format.html { redirect_to ticket_url(@ticket), notice: "Comment could not be added." } if @ticket.resolved
+    format.html { redirect_to ticket_url(@ticket), notice: "Comments can not be added for closed tickets." } if @ticket.resolved
     @comment = TicketComment.new(ticket_comment_params.merge({user_id: current_user.id, ticket_id: @ticket.id}))
     respond_to do |format|
       if @comment.save

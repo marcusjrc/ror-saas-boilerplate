@@ -127,6 +127,11 @@ GEM
     drb (2.1.1)
       ruby2_keywords
     erubi (1.12.0)
+    factory_bot (6.4.5)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.4.3)
+      factory_bot (~> 6.4)
+      railties (>= 5.0.0)
     globalid (1.2.1)
       activesupport (>= 6.1)
     htmlbeautifier (1.4.2)
@@ -351,6 +356,7 @@ DEPENDENCIES
   chronic (~> 0.10.2)
   debug
   devise (~> 4.9)
+  factory_bot_rails
   htmlbeautifier (~> 1.4)
   importmap-rails
   jbuilder

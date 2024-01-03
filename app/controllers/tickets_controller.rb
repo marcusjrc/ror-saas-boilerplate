@@ -4,6 +4,7 @@ class TicketsController < ApplicationController
 
   # GET /tickets or /tickets.json
   def index
+    # TODO: Add Pagination
     @tickets = Ticket.where(user_id: current_user.id)
   end
 
