@@ -11,7 +11,6 @@ class Subscription < ApplicationRecord
   end
 
   def create_notification
-    puts "HEY CREATE NOTIFICATION"
     Notification.create(user:, content: "You are now a #{product.title} member. Manage your subscription here", url: subscription_index_path)
   end
 end
