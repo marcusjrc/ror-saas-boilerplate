@@ -4,9 +4,6 @@ This is a wip project for creating a SaaS boilerplate/template application using
 
 Currently uses these gems: Tailwindcss, Devise, Rspec, standardrb, stripe
 
-## Demo
-saas.marcusrc.com
-
 ## Features
 1. User Login, Registration & Forgot Password functionality (via Devise gem)
 1. Stripe integration for basic monthly subscription tiers. Webhooks are supported. Uses Stripe customer portal for user subscription management
